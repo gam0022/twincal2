@@ -1,0 +1,165 @@
+<%# coding: utf-8 %>
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="utf-8">
+    <title>TwinCal</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/overwrite.css" rel="stylesheet">
+    <script src="js/jquery-1.8.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/validation.js"></script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">TwinCal</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#other">Other</a></li>
+              <li><a href="http://gam0022.net">Blog</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>TwinCal</h1>
+        <p>TwinCalとは、Twinsの時間割をiCalendar形式に変換し、
+        Googleカレンダー・iCalへのインポートをサポートするWebサービスです。</p>
+      </div>
+
+      <section id="step1">
+      <div class="page-header">
+        <h2><small>Step1</small> TwinsからCSVをダウンロードする</h2>
+      </div>
+      <div class="row">
+        <div class="span3">
+          <h3><small>1.1</small> Twinsにログイン</h3>
+          <img src="img/step1-1.png">
+          <p><a class="btn" href="https://twins.tsukuba.ac.jp">Twins &raquo;</a></p>
+        </div>
+        <div class="span3">
+          <h3><small>1.2</small> 履修登録・登録状況照会</h3>
+          <img src="img/step1-2.png">
+        </div>
+        <div class="span3">
+          <h3><small>1.3</small> ダウンロード</h3>
+          <img src="img/step1-3.png">
+        </div>
+        <div class="span3">
+          <h3><small>1.4</small> 出力</h3>
+          <img src="img/step1-4.png">
+        </div>
+      </div>
+      </section>
+
+      <section id="step2">
+      <div class="page-header">
+        <h2><small>Step2</small> TwinCalを使ってCSVをiCalendar形式に変換する</h2>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <p><strong>下のフォームに</strong>Step1でダウンロードしたCSVを指定してください。</p>
+          <form method="post" action="parse.rb" class="well form-inline" id="form1" enctype="multipart/form-data">
+            <% if @has_error %>
+              <p class="alert alert-error">
+              <a class="close" data-dismiss="alert" href="#">×</a>
+              CSVファイルに何か問題があるようです。
+              </p>
+              <script>
+                $('html,body').animate({scrollTop: ($("p.alert:first").offset().top-100) }, 'slow');
+              </script>
+            <% end %>
+            <input type="file" name="file" id="file" class="validate required input-file">
+            <!--label class="checkbox">
+              <input type="checkbox" name="opt" value="merge" checked="checked"> コマの連続する授業をまとめる
+            </label-->
+            <button type="submit" class="btn btn-primary btn-large" id="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      </section>
+
+      <section id="step3">
+      <div class="page-header">
+        <h2><small>Step3</small> Googleカレンダー・iCal にインポートする</h2>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <h2>Googleカレンダーの場合</h2>
+          <img src="img/step3-1.png">
+          <ol>
+            <li>「カレンダー設定 &gt; カレンダー」に行く。</li>
+            <li>「新しいカレンダーの作成」をする。</li>
+            <li>「カレンダーをインポート」をする。</li>
+          </ol>
+        </div>
+        <div class="span6">
+          <h2>iCalの場合</h2>
+          <img src="img/step3-2.png">
+          <img src="img/step3-3.png">
+          <ol>
+            <li>メニューから「ファイル &gt; 読み込む &gt; 読み込む」。</li>
+            <li>ダウンロードした.icsファイルを選択。</li>
+            <li>どのカレンダーにインポートするか聞かれるので、「新規カレンダー」を選択。</li>
+          </ol>
+        </div>
+        <div class="span12 alert alert-info">
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          <h4 class="alert-heading">Hint</h4>
+          <span>何か不具合が起きるかもしれないので、新規作成したカレンダーにインポートすることを推奨します。</span>
+        </div>
+      </div>
+      </section>
+
+      <hr>
+
+      <section id="other">
+      <div class="page-header">
+        <h1>Other</h1>
+      </div>
+      <div class="row">
+        <div class="span5 well" id="issues">
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          <p>
+          <span class="label label-warning">Issues</span>
+          何か問題があれば、@gam0022 まで連絡お願いします。
+          </p>
+          <p><a class="btn" href="https://twitter.com/gam0022">@gam0022 &raquo;</a></p>
+          <p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://gam0022.net/app/twincal/" data-text="Twinsに登録した時間割をGoogleカレンダーやiCalにインポートするWebサービス「TwinCal」" data-via="gam0022" data-lang="ja" data-hashtags="twincal">ツイート</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+        </div>
+        <!--div class="span5 well" id="info">
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          <p>
+          <span class="label label-info">Info</span>
+          ソースコードは github にて公開しています。
+          </p>
+          <p><a class="btn" href="https://github.com/gam0022/twincal">github &raquo;</a></p>
+        </div>
+      </div-->
+      </section>
+
+      <hr>
+
+      <footer>
+      <p>Copyright &copy; 2013 - がむ(@gam0022)</p>
+      </footer>
+
+    </div> <!-- /container -->
+  </body>
+</html>
