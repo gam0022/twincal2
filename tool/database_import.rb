@@ -4,7 +4,7 @@ require 'sqlite3'
 require 'csv'
 
 database_filename = "kamoku.db"
-csv_filename = "kdb_20130408174959_2.csv" #"kdb_20130408172253.csv" 
+csv_filename = "kdb_20130703013255_2.csv"
 tabale_name = "kamoku2013"
 
 db = SQLite3::Database.new(database_filename)
