@@ -1,0 +1,3 @@
+<Files ~ "(functions.rb|preview.rb|deploy|\.log$|\.erb$)">
+deny from all 
+</Files>
