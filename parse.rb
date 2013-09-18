@@ -20,7 +20,7 @@ begin
   cgi = CGI.new
 
   database_filename = "kamoku.db"
-  tabale_name = "kamoku2013"
+  table_name = "kamoku2013"
 
   db = SQLite3::Database.new(database_filename)
   db.busy_timeout(100000)
@@ -29,10 +29,10 @@ begin
   subjects = []
 
   table.each do |csv_row|
-    kcode = csv_row[0].delete("'")
-    sql = "select * from #{tabale_name} where kcode = '#{kcode}'"
+    kcode = csv_row[0].delete("\n\r").gsub("'", "''")
+    sql = "select * from #{table_name} where kcode = '#{kcode}'"
     db.execute(sql) do |row|
-    #sql = "select * from #{tabale_name} where ( kcode = ? )"
+    #sql = "select * from #{table_name} where kcode = ?"
     #db.execute(sql, kcode) do |row|
 
       s = {
