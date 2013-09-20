@@ -97,8 +97,18 @@
                 $('html,body').animate({scrollTop: ($("p.alert:first").offset().top-100) }, 'slow');
               </script>
             <% end %>
-            <input type="file" name="file" id="file" class="validate required input-file">
+
+            <input type="file" id="file" name="file" style="display: none;" class="validate required input-file">
+            <div class="input-prepend">
+              <a class="btn" onclick="$('#file').click();"><i class="icon-folder-open"></i></a>
+              <span id="cover" class="input-xlarge uneditable-input">select file</span>
+            </div>
             <button type="submit" class="btn btn-primary btn-large" id="submit">Submit</button>
+            <script type="text/javascript">
+              $('#file').change(function() {
+                  $('#cover').html($(this).val());
+              });
+            </script>
           </form>
         </div>
       </div>
