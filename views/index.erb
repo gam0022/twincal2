@@ -13,6 +13,31 @@
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 80px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 100px;
+        line-height: 1;
+      }
+      .jumbotron .lead {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
   </head>
@@ -30,7 +55,10 @@
           <a class="brand" href="#">TwinCal</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#step1">Main</a></li>
+              <li><a href="#tweets">Tweets</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#updates">Updates</a></li>
               <li><a href="#other">Other</a></li>
               <li><a href="http://gam0022.net">Blog</a></li>
             </ul>
@@ -41,12 +69,14 @@
 
     <div class="container">
 
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
+      <div class="jumbotron">
         <h1>TwinCal</h1>
-        <p>TwinCalとは、Twinsの時間割をiCalendar形式に変換し、
-        Googleカレンダー・iCalへのインポートをサポートするWebサービスです。</p>
+        <p class="lead">Twinsの履修情報から、Googleカレンダー・iCalへの時間割を作成するWebサービスです。</p>
+        <p class="lead">kDBから、教室番号、単位数、科目番号などを自動的に取得します。</p>
+        <a class="btn btn-large btn-success" href="#step1">Get started</a>
       </div>
+
+      <hr>
 
       <section id="step1">
       <div class="page-header">
@@ -100,8 +130,8 @@
             <script type="text/javascript">
               $('#file').change(function() {
                   $('#cover').html($(this).val());
-              });
-            </script>
+                  });
+</script>
           </form>
         </div>
       </div>
@@ -139,53 +169,15 @@
       </div>
       </section>
 
-      <section id="faq">
-      <div class="page-header">
-        <h1>FAQ</h1>
-      </div>
-
-      <div class="well">
-        <h4><span class="label label-warning">Q.</span> カレンダーが空で出力される</h4>
-        <p><span class="label label-info">A. </span> 原因は色々考えられます。下の3つを確認してください。
-        <ol>
-          <li>Twinsでは選択されたモジュールのCSVが出力されるので、目的のモジュールを選択した状態でCSV出力をしてください。</li>
-          <li>集中など時間の分からない科目はTwinCalは無視します。</li>
-          <li>どうしても解決しない場合は、下の連絡先まで報告すると対応するかもしれません。</li>
-        </ol>
-        </p>
-      </div>
-
-      <div class="well">
-        <h4><span class="label label-warning">Q.</span> 春Cの時間割を作ろうとしたら、通年の授業が重複して登録される</h4>
-        <p><span class="label label-info">A. </span> Twinsで春CのCSVを出力すると通年科目も出力されてしまうのが原因です。好きな方の解決策を試してください。
-        <ol>
-          <li>ダウンロードしたCSVをテキストエディタで編集して通年の科目の行を消す。
-          <li>カレンダー上で通年の科目を削除する。
-        </ol>
-        </p>
-      </div>
-
-      <div class="well">
-        <h4><span class="label label-warning">Q.</span> 教室番号や担当教員、単位数はどこから取得しているのか?</h4>
-        <p><span class="label label-info">A. </span> <a href="https://kdb.tsukuba.ac.jp/">kDB</a>から取得しています。</p>
-      </div>
-
-      <div class="well">
-        <h4><span class="label label-warning">Q.</span> 個人情報はどう扱ってるのか?</h4>
-        <p><span class="label label-info">A. </span> Twinsで出力したCSVをテキストエディタで開けばわかりますが、科目番号以外の情報は含まれていないので、
-        個人を特定できるような情報は含まれていません。また、取得された情報がその他の目的で使用されることは一切ありません。</p>
-      </div>
-
-      </section>
-
       <section id="tweets">
       <div class="page-header">
         <h1>Tweets</h1>
       </div>
+
+      <p>TwinCalに関するTwitterのツイートをまとめました。(最終更新: 2013/10/08)</p>
+
       <div class="row">
         <div class="span6">
-          <p>TwinCalに関するTwitterのツイートをまとめました。(最終更新: 2013/10/02)</p>
-
           <blockquote class="twitter-tweet"><p>新学期で教室がわからないみなさん、TwinCalをつかいましょう！！！！</p>&mdash; Yuji (@yuji_tsukuba) <a href="https://twitter.com/yuji_tsukuba/statuses/385210270567505920">October 2, 2013</a></blockquote>
 
           <blockquote class="twitter-tweet"><p>TwinCalを使えば、こんなカレンダーがPCやスマホで見れるようになりますよ &#39;ω&#39; <a href="http://t.co/JZZmVXtyOt">pic.twitter.com/JZZmVXtyOt</a></p>&mdash; Yuji (@yuji_tsukuba) <a href="https://twitter.com/yuji_tsukuba/statuses/385211624178466816">October 2, 2013</a></blockquote>
@@ -231,8 +223,6 @@
 
           <blockquote class="twitter-tweet"><p>TwinCalで秋学期の時間割をiCalにぶち込んだ。鬼便利すぎる。 <a href="http://t.co/1zyULmZsdE">http://t.co/1zyULmZsdE</a> <a href="https://twitter.com/search?q=%23%E3%82%B9%E3%83%86%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0&amp;src=hash">#ステルスマーケティング</a></p>&mdash; resessh (@resessh7) <a href="https://twitter.com/resessh7/statuses/384502559848669185">September 30, 2013</a></blockquote>
 
-          <blockquote class="twitter-tweet"><p>gam0022++</p>&mdash; 吉村　優 (@_yyu_) <a href="https://twitter.com/_yyu_/statuses/325836183894638592">April 21, 2013</a></blockquote>
-
           <blockquote class="twitter-tweet"><p><a href="https://twitter.com/gam0022">@gam0022</a> Twincal使用させて頂きました。非常に便利なアプリで助かりました。現時点で振替授業への対応は行われていないようなのですが、今後実装する予定などございますでしょうか。&#10;振替授業の日程は学年暦にて公開されています。 &#10;<a href="http://t.co/iEBBuEoYoh">http://t.co/iEBBuEoYoh</a></p>&mdash; 田井中海人 from STAR☆ANIS (@tainakanchu) <a href="https://twitter.com/tainakanchu/statuses/326001713024741376">April 21, 2013</a></blockquote>
 
           <blockquote class="twitter-tweet"><p>TwinCal神サービスだった</p>&mdash; linerlock (@linerlock) <a href="https://twitter.com/linerlock/statuses/326006162166259712">April 21, 2013</a></blockquote>
@@ -244,7 +234,8 @@
           <blockquote class="twitter-tweet"><p>Twinsに登録した時間割をGoogleカレンダーやiCalにインポートするWebサービス「TwinCal」 <a href="http://t.co/azAOfr6ezX">http://t.co/azAOfr6ezX</a> <a href="https://twitter.com/search?q=%23twincal&amp;src=hash">#twincal</a> 試しにやってみたけど、これ使えるべ。</p>&mdash; ふぁっきゅーきなこChan (@edamamekinako) <a href="https://twitter.com/edamamekinako/statuses/352583148648931328">July 4, 2013</a></blockquote>
 
           <blockquote class="twitter-tweet"><p>.<a href="https://twitter.com/gam0022">@gam0022</a>が作ったTwinsの時間割をiCalendar形式に変換するアプリ（｀・ω・´） 【twincal】 <a href="http://t.co/cD7y5ssj">http://t.co/cD7y5ssj</a></p>&mdash; ちょこぷよ(氷点の足戦士) (@chocopuyo) <a href="https://twitter.com/chocopuyo/statuses/241537932408803328">August 31, 2012</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+          <blockquote class="twitter-tweet"><p>gam0022++</p>&mdash; 吉村　優 (@_yyu_) <a href="https://twitter.com/_yyu_/statuses/325836183894638592">April 21, 2013</a></blockquote>
 
           <blockquote class="twitter-tweet"><p>Twinsに登録した時間割をGoogleカレンダーやiCalにインポートするWebサービス「TwinCal」 <a href="http://t.co/8b8pjg3SVj">http://t.co/8b8pjg3SVj</a> <a href="https://twitter.com/search?q=%23twincal&amp;src=hash">#twincal</a> <a href="https://twitter.com/gam0022">@gam0022</a>さんから</p>&mdash; HALTMAN (@c_plus_c) <a href="https://twitter.com/c_plus_c/statuses/325998090656043010">April 21, 2013</a></blockquote>
 
@@ -252,9 +243,51 @@
 
           <blockquote class="twitter-tweet"><p>学生さん向けのGoogleカレンダーの時間割サービスがある / “TwinCal” <a href="http://t.co/mAFDgeaV5i">http://t.co/mAFDgeaV5i</a></p>&mdash; クロネコ (@96neko) <a href="https://twitter.com/96neko/statuses/382492224803446784">September 24, 2013</a></blockquote>
 
+          <blockquote class="twitter-tweet"><p>twincalでgooogleカレンダー同期して、そのデータをエクスポートして時間割アプリに突っ込んだ&#10;詳細はカレンダーで、さっと確認するときは時間割アプリで&#10;goodだ</p>&mdash; arisua4 (@arisua4) <a href="https://twitter.com/arisua4/statuses/387202055909036034">October 7, 2013</a></blockquote>
+
         </div>
       </div>
       </section>
+
+      <section id="faq">
+      <div class="page-header">
+        <h1>FAQ</h1>
+      </div>
+
+      <div class="well">
+        <h4><span class="label label-warning">Q.</span> カレンダーが空で出力される</h4>
+        <p><span class="label label-info">A. </span> 原因は色々考えられます。下の3つを確認してください。
+        <ol>
+          <li>Twinsでは選択されたモジュールのCSVが出力されるので、目的のモジュールを選択した状態でCSV出力をしてください。</li>
+          <li>集中など時間の分からない科目はTwinCalは無視します。</li>
+          <li>どうしても解決しない場合は、下の連絡先まで報告すると対応するかもしれません。</li>
+        </ol>
+        </p>
+      </div>
+
+      <div class="well">
+        <h4><span class="label label-warning">Q.</span> 春Cの時間割を作ろうとしたら、通年の授業が重複して登録される</h4>
+        <p><span class="label label-info">A. </span> Twinsで春CのCSVを出力すると通年科目も出力されてしまうのが原因です。好きな方の解決策を試してください。
+        <ol>
+          <li>ダウンロードしたCSVをテキストエディタで編集して通年の科目の行を消す。
+          <li>カレンダー上で通年の科目を削除する。
+        </ol>
+        </p>
+      </div>
+
+      <div class="well">
+        <h4><span class="label label-warning">Q.</span> 教室番号や担当教員、単位数はどこから取得しているのか?</h4>
+        <p><span class="label label-info">A. </span> <a href="https://kdb.tsukuba.ac.jp/">kDB</a>から取得しています。</p>
+      </div>
+
+      <div class="well">
+        <h4><span class="label label-warning">Q.</span> 個人情報はどう扱ってるのか?</h4>
+        <p><span class="label label-info">A. </span> Twinsで出力したCSVをテキストエディタで開けばわかりますが、科目番号以外の情報は含まれていないので、
+        個人を特定できるような情報は含まれていません。また、取得された情報がその他の目的で使用されることは一切ありません。</p>
+      </div>
+
+      </section>
+
 
       <section id="updates">
       <div class="page-header">
