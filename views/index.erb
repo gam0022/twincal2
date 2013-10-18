@@ -71,7 +71,7 @@
 
       <div class="jumbotron">
         <h1>TwinCal</h1>
-        <p class="lead">Twinsの履修情報から、Googleカレンダー・iCalへの時間割を作成するWebサービスです。</p>
+        <p class="lead">Twinsの履修情報から、Googleカレンダー・iCalの時間割を作成するWebサービスです。</p>
         <p class="lead">kDBから、教室番号、単位数、科目番号などを自動的に取得します。</p>
         <a class="btn btn-large btn-success" href="#step1">Get started</a>
       </div>
@@ -124,7 +124,7 @@
             <input type="file" id="file" name="file" style="display: none;" class="validate required input-file">
             <div class="input-prepend">
               <a class="btn" onclick="$('#file').click();"><i class="icon-folder-open"></i></a>
-              <span id="cover" class="input-xlarge uneditable-input">select file</span>
+              <span id="cover" class="input-xlarge uneditable-input" onclick="$('#file').click();"></span>
             </div>
             <button type="submit" class="btn btn-primary btn-large" id="submit">Submit</button>
             <script type="text/javascript">
