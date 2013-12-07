@@ -1,3 +1,3 @@
-<Files ~ "(functions.rb|preview.rb|deploy|\.log$|\.erb$)">
+<Files ~ "(functions.rb|\.log$|\.erb$)">
 deny from all 
 </Files>
