@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.725"
-     inkscape:cx="383.30049"
+     inkscape:cx="137.78325"
      inkscape:cy="377.14286"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -59,9 +59,9 @@
        x="148.57143"
        y="352.36215"
        ry="96.153847"
-       inkscape:export-filename="/Users/gam0022/Downloads/twincal/icon.png"
-       inkscape:export-xdpi="11.52"
-       inkscape:export-ydpi="11.52" />
+       inkscape:export-filename="/Users/gam0022/Dropbox/就活/アカリク/twincal-icon.png"
+       inkscape:export-xdpi="92.160004"
+       inkscape:export-ydpi="92.160004" />
     <rect
        style="fill:#ffffff"
        id="rect2987"
@@ -80,18 +80,6 @@
        style="fill:#ffffff" />
     <text
        xml:space="preserve"
-       style="font-size:325.82620239000004858px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#363636;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
-       x="251.63402"
-       y="836.23175"
-       id="text2993"
-       sodipodi:linespacing="125%"
-       transform="scale(1.098955,0.90995535)"><tspan
-         sodipodi:role="line"
-         id="tspan2997"
-         x="251.63402"
-         y="836.23175">T</tspan></text>
-    <text
-       xml:space="preserve"
        style="font-size:87.7834549px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        x="244.34955"
        y="445.67932"
@@ -102,5 +90,25 @@
          id="tspan3003"
          x="244.34955"
          y="445.67932">TwinCal</tspan></text>
-  </g>
+    <g
+       style="font-size:319.42648315px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       id="text2989"
+       transform="matrix(1.0957607,0,0,1.0957607,-52.536045,-52.559274)">
+      <path
+         d="m 304.37696,533.0163 214.61467,0 0,57.38726 -77.20513,0 0,187.4759 -60.04844,0 0,-187.4759 -77.3611,0 0,-57.38726"
+         id="path2994"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2996"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"><flowRegion
+         id="flowRegion2998"><rect
+           id="rect3000"
+           width="157.24138"
+           height="82.758621"
+           x="-275.86206"
+           y="542.01733" /></flowRegion><flowPara
+         id="flowPara3004">T</flowPara></flowRoot>  </g>
 </svg>
