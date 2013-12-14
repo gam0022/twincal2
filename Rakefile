@@ -10,7 +10,7 @@ task :preview do
     :Port => 3000,
     #:DocumentRoot => File.join(Dir.pwd, "/html")
     :DocumentRoot => File.join(Dir.pwd),
-    :DirectoryIndex => ['index.rb']
+    :DirectoryIndex => ['index.rb', 'index.html']
   )
   trap("INT") { s.shutdown }
   s.start

@@ -1,5 +1,3 @@
-<%# coding: utf-8 %>
-<!DOCTYPE html>
 <html lang="jp">
   <head>
     <meta charset="utf-8">
@@ -100,13 +98,13 @@
         <a class="btn btn-large btn-success" href="#step1">Get started</a>
       </div>
 
-      <div class="well" id="info" style="max-width:600px;margin: 0 auto;">
+      <div class="well" id="info" style="max-width:400px;margin: 0 auto;">
         <a class="close" data-dismiss="alert" href="#">×</a>
         <p>
         <span class="label label-info">Info</span>
-        <a href="http://acaric-valuator.com/event/studentappcontest2013/">学生のためのアプリ開発コンテスト</a>のために特設ページを用意しました。
+        通常のページに戻る。
         </p>
-        <p><a class="btn" href="acaric-studentappcontest2013.html">TwinCal - 学生のためのアプリ開発コンテスト特設ページ »</a></p>
+        <p><a class="btn" href="./">TwinCal »</a></p>
       </div>
 
       <hr>
@@ -134,6 +132,34 @@
           <img src="img/step1-4.png">
         </div>
       </div>
+
+
+      <h3>TwinsのサンプルCSV</h3>
+      <p>審査員や観覧客のみなさんはTwinsが使えないと思うので、CSVのサンプルファイルを用意しました。</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>File</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>一般的な履修サンプル</td>
+          <td><a href="files/sample1.csv">sample1.csv</a></td>
+          <td>授業が詰まっている人の履修です。</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>意識の低い履修サンプル</td>
+          <td><a href="files/sample2.csv">sample2.csv</a></td>
+          <td>TwinCalの作者の今学期の履修です。</td>
+        </tr>
+        </tbody>
+      </table>
       </section>
 
       <section id="step2">
@@ -144,16 +170,6 @@
         <div class="span12">
           <p><strong>下のフォームに</strong>Step1でダウンロードしたCSVを指定してください。</p>
           <form method="post" action="parse.rb" class="well form-inline" id="form1" enctype="multipart/form-data">
-            <% if @has_error %>
-              <p class="alert alert-error">
-              <a class="close" data-dismiss="alert" href="#">×</a>
-              CSVファイルに何か問題があるようです。
-              </p>
-              <script>
-                $('html,body').animate({scrollTop: ($("p.alert:first").offset().top-100) }, 'slow');
-              </script>
-            <% end %>
-
             <input type="file" id="file" name="file" style="display: none;" class="validate required input-file">
             <div class="input-prepend">
               <a class="btn" onclick="$('#file').click();"><i class="icon-folder-open"></i></a>
@@ -164,7 +180,7 @@
               $('#file').change(function() {
                   $('#cover').html($(this).val());
                   });
-</script>
+            </script>
           </form>
         </div>
       </div>
