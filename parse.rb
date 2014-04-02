@@ -20,7 +20,7 @@ begin
   cgi = CGI.new
 
   database_filename = "kamoku.db"
-  table_name = "kamoku2013"
+  table_name = "kamoku"
 
   db = SQLite3::Database.new(database_filename)
   db.busy_timeout(100000)

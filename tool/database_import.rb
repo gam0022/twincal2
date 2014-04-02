@@ -3,9 +3,13 @@
 require 'sqlite3'
 require 'csv'
 
+# usage: 
+# $ rm kamoku.db
+# $ ruby database_import.rb kdb_20140402080858_2.csv
+
 database_filename = "kamoku.db"
-csv_filename = "kdb_20130918113811_2.csv"
-tabale_name = "kamoku2013"
+csv_filename = ARGV[0]
+tabale_name = "kamoku"
 
 db = SQLite3::Database.new(database_filename)
 db.busy_timeout(100000)
@@ -17,12 +21,18 @@ db.execute("create index kcode_index on #{tabale_name}(kcode)")
 
 table = CSV.parse(File.open(csv_filename).read.encode("UTF-8", "CP932"))
 
+row_count = 0
+
 table.each do |row|
   str = "insert into #{tabale_name} values(#{row.take(12).map{|s| 
     s ? "'#{s.gsub("'", "''")}'" : "''"
   }.join(",")})"
   #p str
   db.execute(str)
+
+  row_count += 1
 end
 
 db.close
+
+puts "正常に処理が終了しました。(#{row_count}件)"
