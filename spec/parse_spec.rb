@@ -5,32 +5,85 @@ require_relative '../functions.rb'
 
 describe "Parse" do
   context "Jigen" do
-    it "月・木2,3,5" do
-      parse_jigen("月・木2,3,5").should == 
-        [{:wday=>1, :start=>2, :end=>3},
-         {:wday=>1, :start=>5, :end=>5},
-         {:wday=>4, :start=>2, :end=>3},
-         {:wday=>4, :start=>5, :end=>5}]
+    context "when be separated by commas" do
+      it "月4" do
+        expect = [
+          { wday: 1, start: 4, end: 4 },
+        ]
+        expect(parse_jigen("月4")).to eq(expect)
+      end
+
+      it "月4,5" do
+        expect = [
+          { wday: 1, start: 4, end: 5 },
+        ]
+        expect(parse_jigen("月4,5")).to eq(expect)
+      end
+
+      it "月・木2,3,5" do
+        expect = [
+          { wday: 1, start: 2, end: 3 },
+          { wday: 1, start: 5, end: 5 },
+          { wday: 4, start: 2, end: 3 },
+          { wday: 4, start: 5, end: 5 }
+        ]
+        expect(parse_jigen("月・木2,3,5")).to eq(expect)
+      end
+
+      it "月・木2,4,5" do
+        expect = [
+          { wday: 1, start: 2, end: 2 },
+          { wday: 1, start: 4, end: 5 },
+          { wday: 4, start: 2, end: 2 },
+          { wday: 4, start: 4, end: 5 }
+        ]
+        expect(parse_jigen("月・木2,4,5")).to eq(expect)
+      end
+
+      it "月・木2,3,5,6" do
+        expect = [
+          { wday: 1, start: 2, end: 3 },
+          { wday: 1, start: 5, end: 6 },
+          { wday: 4, start: 2, end: 3 },
+          { wday: 4, start: 5, end: 6 },
+        ]
+        expect(parse_jigen("月・木2,3,5,6")).to eq(expect)
+      end
     end
 
-    it "集中" do
-      parse_jigen("集中").should == []
+    describe "when use a hyphen" do
+      it "月・金3-6" do
+        expect = [
+          { wday: 1, start: 3, end: 6 },
+          { wday: 5, start: 3, end: 6 },
+        ]
+      end
+    end
+
+    describe "when others" do
+      it "集中" do
+        expect(parse_jigen("集中")).to eq([])
+      end
     end
   end
 
   context "Term" do
 
     it "夏季休業中春AB秋C" do
-      parse_term("夏季休業中春AB秋C").should == 
-        [{:begin=>"2013/08/13", :end=>"2013/09/30 13:00"},
-         {:begin=>"2013/04/12", :end=>"2013/07/01 13:00"},
-         {:begin=>"2013/12/23", :end=>"2014/02/07 13:00"}]
+      expect = [
+        { begin: TERM_BEGIN["夏"], end: TERM_END["夏"] },
+        { begin: TERM_BEGIN["春"]["A"], end: TERM_END["春"]["B"] },
+        { begin: TERM_BEGIN["秋"]["C"], end: TERM_END["秋"]["C"] }
+      ]
+      expect(parse_term("夏季休業中春AB秋C")).to eq(expect)
     end
 
     it "通年" do
-      parse_term("通年").should == 
-        [{:begin=>"2013/04/12", :end=>"2013/08/07 13:00"},
-         {:begin=>"2013/10/01", :end=>"2014/02/07 13:00"}]
+      expect = [
+        { begin: TERM_BEGIN["春"]["A"], end: TERM_END["春"]["C"] },
+        { begin: TERM_BEGIN["秋"]["A"], end: TERM_END["秋"]["C"] }
+      ]
+      expect(parse_term("通年")).to eq(expect)
     end
   end
 end

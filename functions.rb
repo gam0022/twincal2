@@ -104,33 +104,33 @@ end
 def parse_jigen(str)
   ret = []
   str.lines do |line|
-    rscan = line.scan(/^(\D+)([\d\-,]+)$/)
-    if rscan.size == 1
-      wday_ss = rscan[0][0]
-      koma_ss = rscan[0][1]
+    if line =~ /^(\D+)([\d\-,]+)$/
+      wday_ss = $1
+      koma_ss = $2
 
       wday_ss.split("・").each do |wday_s|
         wday = WDAY_MAP[wday_s]
 
+        # example: 4,5
         if koma_ss =~ /^[\d,s]+$/
-          kstart = kend = nil
-          pre_k = 0
+          kstart = kend = 0
 
-          koma_ss.split(",").each do |k_s|
-            k = k_s.to_i
-            if pre_k == 0 || k == pre_k + 1
+          koma_ss.split(",").map(&:to_i).each do |k|
+            if kstart == 0
+              kstart = kend = k
+              next
+            end
+
+            if k == kend + 1
               kend = k
             else
-              ret << {:wday => wday, :start => kstart, :end => kend}
-              kstart = kend = nil
+              ret << { wday: wday, start: kstart, end: kend }
+              kstart = kend = k
             end
-            kstart = k unless kstart
-            kend = k unless kend
-            pre_k = k
           end
+          ret << { wday: wday, start: kstart, end: kend }
 
-          ret << {:wday => wday, :start => kstart, :end => kend}
-
+        # example: 3-6
         elsif koma_ss =~ /^[\d\-]+$/
           kstart = koma_ss[0].to_i
           kend   = koma_ss[2].to_i
@@ -170,7 +170,7 @@ def parse_term(str)
       begin_ = end_ = nil
       case mod.size
       when 1
-        begin_ = end_ = mod 
+        begin_ = end_ = mod
       when 2
         begin_ = mod[0]
         end_   = mod[1]
@@ -194,7 +194,7 @@ end
 
 #
 # ログ
-# 
+#
 def log(str, file)
   open(file, "a") do |f|
     f.write("[#{Time.now.to_s}] #{str}\n")
@@ -207,18 +207,18 @@ end
 def exception_handling(e, cgi)
   log(e.to_s + "\n" + e.backtrace.join("\n"), "./error.log")
 
-  print cgi.header( { 
+  print cgi.header( {
     "status"     => "REDIRECT",
     "Location"   => "./?has_error=true"
   })
 end
 
 #TERM_MAP = {
-#  "春AB"  => :S_AB, 
-#  "春ABC" => :S_ABC, 
+#  "春AB"  => :S_AB,
+#  "春ABC" => :S_ABC,
 #  "春C"   => :S_C,
-#  "秋AB"  => :A_AB, 
-#  "秋ABC" => :A_ABC, 
+#  "秋AB"  => :A_AB,
+#  "秋ABC" => :A_ABC,
 #  "秋C"   => :A_C
 #}
 #
