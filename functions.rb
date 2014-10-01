@@ -7,9 +7,7 @@ require 'date'
 require 'sqlite3'
 require 'cgi'
 require 'erb'
-
-P_START   = ["8:40", "10:10", "12:15", "13:45", "15:15", "16:45"]
-P_END     = ["9:55", "11:25", "13:30", "15:00", "16:30", "18:00"]
+require 'yaml'
 
 WEEK      = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
 WEEK_JP   = ["日", "月", "火", "水", "木", "金", "土"]
@@ -24,37 +22,13 @@ WDAY_MAP = {
   "土" => 6
 }
 
-# 学年暦 refs
-# http://www.tsukunavi.com/life/shinseikatsu2014/daigaku/schedule.html
+CONFIG = YAML.load_file(File.expand_path("../config.yml", __FILE__))
 
-TERM_BEGIN = {
-  "春" => {
-    "A" => "2014/04/11",
-    "B" => "2014/05/23",
-    "C" => "2014/07/02"
-  },
-  "夏" => "2014/08/09",
-  "秋" => {
-    "A" => "2014/10/01",
-    "B" => "2014/11/08",
-    "C" => "2014/12/24"
-  }
-}
+P_START   = CONFIG["P"]["START"]
+P_END     = CONFIG["P"]["END"]
 
-# 13:00 となっているのは、GMTで指定するため (JSTなら、22:00)
-TERM_END = {
-  "春" => {
-    "A" => "2014/05/22 13:00",
-    "B" => "2014/07/01 13:00",
-    "C" => "2014/08/06 13:00"
-  },
-  "夏" => "2014/09/30 13:00",
-  "秋" => {
-    "A" => "2014/11/07 13:00",
-    "B" => "2014/12/26 13:00",
-    "C" => "2015/02/12 13:00"
-  }
-}
+TERM_BEGIN = CONFIG["TERM"]["BEGIN"]
+TERM_END = CONFIG["TERM"]["END"]
 
 class Time
 

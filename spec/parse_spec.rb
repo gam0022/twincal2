@@ -4,6 +4,48 @@
 require_relative '../functions.rb'
 
 describe "Parse" do
+  context "Configuration" do
+    before do
+      @config = YAML.load_file(File.expand_path("../../config.yml", __FILE__))
+    end
+
+    describe "P" do
+      describe "START" do
+        it do
+          expect(P_START).to eq(@config["P"]["START"])
+        end
+      end
+
+      describe "END" do
+        it do
+          expect(P_END).to eq(@config["P"]["END"])
+        end
+      end
+    end
+
+    describe "TERM" do
+      describe "BEGIN" do
+        it "春A" do
+          expect(TERM_BEGIN["春"]["A"]).to eq(@config["TERM"]["BEGIN"]["春"]["A"])
+        end
+
+        it "夏" do
+          expect(TERM_BEGIN["夏"]).to eq(@config["TERM"]["BEGIN"]["夏"])
+        end
+      end
+
+      describe "END" do
+        it "春A" do
+          expect(TERM_END["春"]["A"]).to eq(@config["TERM"]["END"]["春"]["A"])
+        end
+
+        it "夏" do
+          expect(TERM_END["夏"]).to eq(@config["TERM"]["END"]["夏"])
+        end
+      end
+    end
+  end
+
   context "Jigen" do
     context "when be separated by commas" do
       it "月4" do
