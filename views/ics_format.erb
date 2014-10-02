@@ -19,7 +19,7 @@ END:VTIMEZONE
 <% @subjects.each do |item| %>BEGIN:VEVENT
 DTSTART;TZID=Asia/Tokyo:<%= item[:start] %>
 DTEND;TZID=Asia/Tokyo:<%= item[:end]  %>
-RRULE:FREQ=WEEKLY;UNTIL=<%= item[:until] %>Z;BYDAY=<%= WEEK[item[:wday].to_i][0..1] %>
+RRULE:FREQ=WEEKLY;UNTIL=<%= item[:until] %>Z;BYDAY=<%= KDB::WEEK[item[:wday].to_i][0..1] %>
 DTSTAMP:<%= @DTSTAMP %>
 CREATED:<%= @CREATED %>
 DESCRIPTION:<%= "#{item[:code]} / #{item[:tani]}単位 / #{item[:teacher]}" %>
