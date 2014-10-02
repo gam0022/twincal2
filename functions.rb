@@ -8,6 +8,7 @@ require 'sqlite3'
 require 'cgi'
 require 'erb'
 require 'yaml'
+require 'active_record'
 
 WEEK      = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
 WEEK_JP   = ["日", "月", "火", "水", "木", "金", "土"]
