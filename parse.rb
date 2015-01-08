@@ -19,34 +19,36 @@ begin
 
   cgi = CGI.new
 
-  database_filename = "kamoku.db"
-  table_name = "kamoku"
+  DATABASE_FILENAME = CONFIG["database"]["filename"]
+  COLUMN_NAMES = CONFIG["database"]["column_names"]
+  TABLE_NAME = CONFIG["database"]["table_name"]
 
-  db = SQLite3::Database.new(database_filename)
+  db = SQLite3::Database.new(DATABASE_FILENAME)
   db.busy_timeout(100000)
+  db.results_as_hash = true
 
   table = CSV.parse(cgi.params['file'][0].read)
   subjects = []
 
   table.each do |csv_row|
-    kcode = csv_row[0].delete("\n\r").gsub("'", "''")
-    sql = "select * from #{table_name} where kcode = '#{kcode}'"
+    code = csv_row[0].delete("\n\r").gsub("'", "''")
+    sql = "select * from #{TABLE_NAME} where code = '#{code}'"
     db.execute(sql) do |row|
-    #sql = "select * from #{table_name} where kcode = ?"
-    #db.execute(sql, kcode) do |row|
+    #sql = "select * from #{TABLE_NAME} where code = ?"
+    #db.execute(sql, code) do |row|
 
       s = {
-        :code => row[0],
-        :name => row[1],
-        :tani => row[2],
-        :location => row[6],
-        :teacher => row[7]
+        :code => row["code"],
+        :name => row["name"],
+        :tani => row["unit"],
+        :location => row["location"],
+        :teacher => row["teacher"]
       }
 
-      term_s = row[4]
+      term_s = row["term"]
       parse_term(term_s).each do |term|
 
-        jigen_ss = row[5] # ex: 木5,6 / 集中 / 応談 / 随時 / 火・金5
+        jigen_ss = row["period"] # ex: 木5,6 / 集中 / 応談 / 随時 / 火・金5
         parse_jigen(jigen_ss).each do |jigen|
 
           date = get_term_start_each_wday(Date.parse(term[:begin]))[jigen[:wday]]

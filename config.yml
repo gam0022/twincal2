@@ -37,3 +37,22 @@ TERM:
       A: 2014/11/07 13:00
       B: 2014/12/26 13:00
       C: 2015/02/12 13:00
+database:
+  filename: "kamoku.db"
+  table_name: "kamoku"
+  column_names:
+    - "code"
+    - "name"
+    - "method"
+    - "unit"
+    - "grade"
+    - "term"
+    - "period"
+    - "location"
+    - "teacher"
+    - "abstruct"
+    - "note"
+    - "research_students"
+    - "reason"
+    - "english_name"
+    - "time"
