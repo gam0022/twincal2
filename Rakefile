@@ -18,5 +18,5 @@ end
 
 task :deploy do
   # TODO: サーバーの設定は config ファイルに書くようにする
-  puts `rsync -avze 'ssh -p 3843' --delete --exclude '*.log' ./ root@gam0022.net:/var/www/html/app/twincal`
+  puts `rsync -avze 'ssh' --delete --exclude '*.log' ./ g22:/var/www/html/app/twincal`
 end
